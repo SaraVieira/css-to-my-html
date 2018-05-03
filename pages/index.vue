@@ -1,6 +1,9 @@
 <template>
     <main>
-      <h1>Swipe them quotes</h1>
+      <h1 class="desktop">Swipe them quotes</h1>
+      <h1 class="mobile">See them quotes</h1>
+      <button v-on:click="remove"> Next Quote </button>
+
         <vue-swing
           @throwout="onThrowout"
           :config="config"
@@ -32,9 +35,6 @@ export default {
   methods: {
     remove() {
       this.swing();
-      setTimeout(() => {
-        this.posts.pop();
-      }, 100);
     },
     swing() {
       const posts = this.$refs.vueswing.cards;
@@ -95,6 +95,34 @@ article {
     font-size: 32px;
   }
 }
+
+button {
+    background: #f3f0ec;
+    border: none;
+    padding: 10px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: -10px;
+    border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
+}
+@media (min-width: 600px) {
+  .mobile {
+    display: none;
+  }
+
+  button {
+    display: none;
+  }
+}
 h1 {
   color: #f3f0ec;
   text-align: center;
@@ -110,6 +138,11 @@ h1 {
   max-height: 80vh;
   max-width: 80vw;
   transform: translateX(-50%) translateY(-50%);
+
+
+    @media (max-width: 600px) {
+        top: calc(50% + 60px);
+    }
 }
 
 </style>
