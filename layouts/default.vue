@@ -16,7 +16,7 @@ html {
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   opacity: 0.9;
-  background: linear-gradient(to right, #642b73, #c6426e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #642b73, #c6426e);
   box-shadow: 0 2px 26px 9px rgba(93,101,103,0.10);
   min-height: 100%;
   overflow: hidden;
