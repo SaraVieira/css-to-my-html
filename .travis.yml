@@ -1,6 +1,6 @@
 language: node_js
 before_install:
-  - curl -sf https://qualityctl.run/install/eslint | sh
+  - curl -sf https://qualityctl.run/install/eslint | BINDIR=. sh
 before_script:
   - qctl-eslint eslint --ext .js,.vue --ignore-path .gitignore .
 cache:
