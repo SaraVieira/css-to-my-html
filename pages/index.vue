@@ -138,6 +138,21 @@ h1 {
   max-height: 80vh;
   max-width: 80vw;
   transform: translateX(-50%) translateY(-50%);
+  background: rgba(0,0,0,0.1);
+
+  &:after {
+      content: "Oh no, you ran out of quotes :(";
+      color: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
+      max-height: 80vh;
+      font-size: 24px;
+      padding: 0 40px;
+      font-weight: bold;
+  }
 
 
     @media (max-width: 600px) {
