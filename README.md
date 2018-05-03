@@ -1,5 +1,7 @@
 # css-to-my-html
 
+[![Build Status](https://travis-ci.org/https://github.com/SaraVieira/css-to-my-html.svg)](https://travis-ci.org/https://github.com/SaraVieira/css-to-my-html)
+
 > Random Nerd \"Romantic\" Quotes
 
 ## Build Setup
