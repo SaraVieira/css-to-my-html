@@ -10,7 +10,7 @@
           ref="vueswing"
           class="swing"
         >
-          <article v-for="post in random">
+          <article v-for="post in random" :key="post.id">
               {{ post.fields.quote }}
             </article>
         </vue-swing>
