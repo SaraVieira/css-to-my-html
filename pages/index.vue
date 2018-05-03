@@ -89,7 +89,6 @@ article {
   padding-top: 30px;
   border: 10px solid #fff;
   opacity: 1;
-  transition: all 200ms ease;
 
   @media (max-width: 600px) {
     font-size: 32px;
