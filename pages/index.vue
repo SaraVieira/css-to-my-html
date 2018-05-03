@@ -9,6 +9,7 @@
         >
           <article v-for="post in random" :key="post.id">
               {{ post.fields.quote }}
+              <div class="heart"></div>
             </article>
         </vue-swing>
     </main>
@@ -26,8 +27,7 @@ export default {
   data: function() {
     return {
       posts: [],
-      config: {
-      },
+      config: {}
     };
   },
   methods: {
@@ -44,8 +44,12 @@ export default {
         Math.random() * 10000 - 50
       );
     },
-    onThrowout({ target, throwDirection }) {
+    onThrowout ({ target, throwDirection }) {
+      const parent = document.getElementsByClassName('swing')[0]
+      const newElement = target.cloneNode(true);
+      newElement.setAttribute('style', 'touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);')
 
+      parent.removeChild(target)
     }
   },
   async asyncData({ env }) {
@@ -77,20 +81,20 @@ article {
   justify-content: center;
   padding: 20px;
   font-weight: 300;
-  font-size: 42px;
+  font-size: 38px;
   color: #1f1f11;
   letter-spacing: 0;
   text-align: center;
   line-height: 1.2;
+  padding-top: 30px;
   border: 10px solid #fff;
-  background-image: linear-gradient(to right, rgba(119,161,211, .3), rgba(121,203,202, .3), rgba(230,132,174, .3));
 
   @media (max-width: 600px) {
     font-size: 32px;
   }
 }
 h1 {
-  color: #3b453d;
+  color: #f3f0ec;
   text-align: center;
   margin: 20px 0;
 }
@@ -104,5 +108,34 @@ h1 {
   max-height: 80vh;
   max-width: 80vw;
   transform: translateX(-50%) translateY(-50%);
+}
+
+.heart {
+  position: absolute;
+  top: 0px;
+  width: 100px;
+  height: 90px;
+  margin: 0 auto;
+
+  &:before,
+  &:after {
+    position: absolute;
+    content: '';
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #c33;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  &:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
 }
 </style>
