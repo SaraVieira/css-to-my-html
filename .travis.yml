@@ -1,4 +1,8 @@
 language: node_js
+before_install:
+- curl -sf https://qualityctl.run/install/eslint | sh
+before_script:
+- qctl-eslint eslint --ext .js,.vue --ignore-path .gitignore .
 cache:
   directories:
     - node_modules
@@ -6,3 +10,6 @@ cache:
 node_js:
   - 9
   - 8
+
+
+Fe26.2**2a0bff5dd40c77ad6f0cad4e6fe7fa72bb1c857dfc176b94a73e363004bd1460*Zi_DdFW5XcUBbhhmAhMfLA*O6zyhpfwcH3b2cTSHvntHTCa2d_OIEAbRIy1nlikY8HDngTutQSfz_X5Eb8bfig1**43e8dfa723a77401388e9c5deb5351e90441882be0ebc5a87ba14a5165ab654f*PYDaQQ4qSjgtuSUMr_F5WvDGlBAnuWZJDNjg2r2whQg
