@@ -9,7 +9,6 @@
         >
           <article v-for="post in random" :key="post.id">
               {{ post.fields.quote }}
-              <div class="heart"></div>
             </article>
         </vue-swing>
     </main>
@@ -46,10 +45,11 @@ export default {
     },
     onThrowout ({ target, throwDirection }) {
       const parent = document.getElementsByClassName('swing')[0]
-      const newElement = target.cloneNode(true);
-      newElement.setAttribute('style', 'touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);')
+      target.setAttribute('style', 'opacity: 0')
 
-      parent.removeChild(target)
+      window.setTimeout(() => {
+        parent.removeChild(target)
+      }, 200)
     }
   },
   async asyncData({ env }) {
@@ -88,6 +88,8 @@ article {
   line-height: 1.2;
   padding-top: 30px;
   border: 10px solid #fff;
+  opacity: 1;
+  transition: all 200ms ease;
 
   @media (max-width: 600px) {
     font-size: 32px;
@@ -110,32 +112,4 @@ h1 {
   transform: translateX(-50%) translateY(-50%);
 }
 
-.heart {
-  position: absolute;
-  top: 0px;
-  width: 100px;
-  height: 90px;
-  margin: 0 auto;
-
-  &:before,
-  &:after {
-    position: absolute;
-    content: '';
-    left: 50px;
-    top: 0;
-    width: 50px;
-    height: 80px;
-    background: #c33;
-    -moz-border-radius: 50px 50px 0 0;
-    border-radius: 50px 50px 0 0;
-    transform: rotate(-45deg);
-    transform-origin: 0 100%;
-  }
-
-  &:after {
-    left: 0;
-    transform: rotate(45deg);
-    transform-origin: 100% 100%;
-  }
-}
 </style>
