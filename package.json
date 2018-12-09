@@ -6,26 +6,27 @@
   "private": true,
   "scripts": {
     "dev": "nuxt --spa",
-    "build": "nuxt build",
+    "build": "nuxt build --spa",
     "start": "nuxt start --spa",
     "generate": "nuxt generate",
     "test": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "contentful": "^6.1.0",
-    "nuxt": "^1.0.0",
+    "contentful": "^7.0.5",
+    "nuxt": "^2.3.4",
+    "nuxt-swing": "github:simllll/nuxt-swing",
     "shuffle-array": "^1.0.1",
-    "swing": "^3.1.1",
+    "swing": "^3.1.3",
     "vue-swing": "^0.0.9"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.1",
-    "eslint": "^4.15.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-vue": "^4.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1"
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.10.0",
+    "eslint-friendly-formatter": "^4.0.1",
+    "eslint-loader": "^2.1.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0"
   }
 }

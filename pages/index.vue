@@ -1,26 +1,30 @@
 <template>
-    <main>
-      <h1 class="desktop">Swipe them quotes</h1>
-      <h1 class="mobile">See them quotes</h1>
-      <button v-on:click="remove"> Next Quote </button>
-
-        <vue-swing
-          @throwout="onThrowout"
-          :config="config"
-          ref="vueswing"
-          class="swing"
+  <main>
+    <h1 class="desktop">Swipe them quotes</h1>
+    <h1 class="mobile">See them quotes</h1>
+    <button v-on:click="remove"> Next Quote </button>
+    <no-ssr>
+      <vue-swing
+        @throwout="onThrowout"
+        :config="config"
+        ref="vueswing"
+        class="swing"
+      >
+        <article
+          v-for="post in random"
+          :key="post.id"
         >
-          <article v-for="post in random" :key="post.id">
-              {{ post.fields.quote }}
-            </article>
-        </vue-swing>
-    </main>
+          {{ post.fields.quote }}
+        </article>
+      </vue-swing>
+    </no-ssr>
+  </main>
 </template>
 
 <script>
-import { createClient } from '~/plugins/contentful.js';
-import shuffle from 'shuffle-array';
-import VueSwing from 'vue-swing';
+import { createClient } from "~/plugins/contentful.js";
+import shuffle from "shuffle-array";
+import VueSwing from "vue-swing";
 
 const client = createClient();
 
@@ -43,13 +47,13 @@ export default {
         Math.random() * 10000 - 50
       );
     },
-    onThrowout ({ target, throwDirection }) {
-      const parent = document.getElementsByClassName('swing')[0]
-      target.setAttribute('style', 'opacity: 0')
+    onThrowout({ target, throwDirection }) {
+      const parent = document.getElementsByClassName("swing")[0];
+      target.setAttribute("style", "opacity: 0");
 
       window.setTimeout(() => {
-        parent.removeChild(target)
-      }, 200)
+        parent.removeChild(target);
+      }, 200);
     }
   },
   async asyncData({ env }) {
@@ -96,16 +100,16 @@ article {
 }
 
 button {
-    background: #f3f0ec;
-    border: none;
-    padding: 10px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: bold;
-    font-size: 16px;
-    margin-top: -10px;
-    border-radius: 4px;
+  background: #f3f0ec;
+  border: none;
+  padding: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: -10px;
+  border-radius: 4px;
 }
 
 @media (max-width: 600px) {
@@ -137,26 +141,24 @@ h1 {
   max-height: 80vh;
   max-width: 80vw;
   transform: translateX(-50%) translateY(-50%);
-  background: rgba(0,0,0,0.1);
+  background: rgba(0, 0, 0, 0.1);
 
   &:after {
-      content: "Oh no, you ran out of quotes :(";
-      color: #fff;
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 500px;
-      max-height: 80vh;
-      font-size: 24px;
-      padding: 0 40px;
-      font-weight: bold;
+    content: "Oh no, you ran out of quotes :(";
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    max-height: 80vh;
+    font-size: 24px;
+    padding: 0 40px;
+    font-weight: bold;
   }
 
-
-    @media (max-width: 600px) {
-        top: calc(50% + 60px);
-    }
+  @media (max-width: 600px) {
+    top: calc(50% + 60px);
+  }
 }
-
 </style>
